@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: movie-service
+          uri: lb://MOVIE-SERVICE
+          predicates:
+            - Path=/movies/**
+        - id: first-service
+          uri: lb://FIRST-SERVICE
+          predicates:
+            - Path=/employee/**
+        - id: second-service
+          uri: lb://SECOND-SERVICE
+          predicates:
+            - Path=/consumer/**
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+        - id: supplier-service
+          uri: lb://SUPPLIER-SERVICE
+          predicates:
+            - Path=/supplier/**

@@ -1,0 +1,9 @@
+server:
+  port: 8086
+  servlet:
+    context-path: /supplier
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
